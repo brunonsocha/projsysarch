@@ -1,0 +1,28 @@
+:root {
+    --app-brown: #1a110a;
+    --app-orange: #ff8c00;
+    --app-yellow: #ffcc00;
+    --app-text: #d1c7b7;
+}
+
+body {
+    background-color: var(--app-brown);
+    color: var(--app-text);
+    font-family: "Junicode", serif;
+}
+
+.header {
+    color: var(--app-orange);
+    font-family: "Junicode", serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+#map {
+    height: 400px;
+    width: 100%;
+    border: 2px solid var(--app-orange);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
