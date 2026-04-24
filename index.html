@@ -3,10 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+
     <title>Product Selection</title>
 </head>
 <body>
-    
+    <div class="container">
+        <div class="header">
+            <h1>Zarządzanie Produktami Spożywczymi</h1>
+            <p>Przegląd produktów w bazie danych</p>
+        </div>
+        
+        <div class="content">            
+            <div id="data" style="display: none;">
+                <table>
+                    <thead>
+                        <tr>
+                            <th id="name">Nazwa</th>
+                            <th id="type">Typ</th>
+                            <th id="quantity">Ilość</th>
+                        </tr>
+                    </thead>
+                    <tbody id="productTable"></tbody>
+                </table>
+            </div>
+            
+            <div id="error" style="display: none;"></div>
+        </div>
+    </div>
     <script type="module" src="./firebase.js"></script>
 </body>
 </html>

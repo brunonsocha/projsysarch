@@ -2,8 +2,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
 import { getFirestore } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,12 +15,39 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore(app);
 
-const querySnapshot = await getDocs(collection(db, "products"));
+// Load products from Firestore
+async function loadProducts() {
+  try {
+    const querySnapshot = await getDocs(collection(db, "products"));
+    
+    const productTable = document.getElementById('productTable');
+    const dataDiv = document.getElementById('data');
+    const errorDiv = document.getElementById('error');
+    
+    productTable.innerHTML = '';
+    
+    querySnapshot.forEach((doc) => {
+      const data = doc.data();
+      const row = document.createElement('tr');
+      row.innerHTML = `
+        <td>${data.name || 'N/A'}</td>
+        <td>${data.type || 'N/A'}</td>
+        <td>${data.quantity || 0}</td>
+      `;
+      productTable.appendChild(row);
+    });
+    
+    dataDiv.style.display = 'block';
+    errorDiv.style.display = 'none';
+    
+  } catch (error) {
+    console.error('Błąd przy ładowaniu produktów:', error);
+    const errorDiv = document.getElementById('error');
+    errorDiv.style.display = 'block';
+    errorDiv.innerHTML = `<strong>Błąd:</strong> ${error.message}`;
+  }
+}
 
-querySnapshot.forEach((doc) => {
-  console.log(doc.data());
-  console.log(doc.data()['name'],doc.data()['type'],doc.data()['quantity']);
-});
+loadProducts();
