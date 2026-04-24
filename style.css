@@ -17,6 +17,8 @@ body {
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 3px;
+    align-content: center;
+    margin: 1rem 0;
 }
 
 #map {
@@ -26,3 +28,20 @@ body {
     border-radius: 8px;
     margin-bottom: 1rem;
 }
+
+.content {
+    padding: 1rem;
+    background-color: var(--app-orange);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.data {
+    color: var(--app-yellow)
+}
+
+.productTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}   
